@@ -23,8 +23,8 @@
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  html{scroll-behavior:smooth;overflow-x:hidden;}
+  body{background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
   img,svg{display:block;max-width:100%;}
   a{color:inherit;text-decoration:none;}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
@@ -42,11 +42,38 @@
     white-space:nowrap;
   }
   .btn:hover{transform:translateY(-1px);}
-  .btn-primary{background:var(--accent);color:#1a1406;}
-  .btn-primary:hover{opacity:.92;}
+  .btn-primary{
+    background:linear-gradient(135deg, #efd9ab, var(--accent) 55%, #c49a55);
+    color:#1a1406;
+    box-shadow:0 10px 28px -10px rgba(212,175,106,0.55);
+    transition:transform .15s ease, box-shadow .2s ease;
+  }
+  .btn-primary:hover{box-shadow:0 16px 36px -8px rgba(212,175,106,0.7);transform:translateY(-2px);}
   .btn-outline{background:transparent;border-color:var(--border);color:var(--text);}
   .btn-outline:hover{border-color:var(--accent);}
   .btn-block{width:100%;}
+
+  /* SCROLL REVEAL */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+  .reveal.is-visible{opacity:1;transform:translateY(0);}
+  .cards-3 .card:nth-child(2){transition-delay:.08s;}
+  .cards-3 .card:nth-child(3){transition-delay:.16s;}
+  .feature-grid .feature-col:nth-child(2){transition-delay:.06s;}
+  .feature-grid .feature-col:nth-child(3){transition-delay:.12s;}
+  .feature-grid .feature-col:nth-child(4){transition-delay:.18s;}
+  .reviews .review:nth-child(2){transition-delay:.08s;}
+  .reviews .review:nth-child(3){transition-delay:.16s;}
+  .gallery .tile:nth-child(2){transition-delay:.04s;}
+  .gallery .tile:nth-child(3){transition-delay:.08s;}
+  .gallery .tile:nth-child(4){transition-delay:.12s;}
+  .gallery .tile:nth-child(5){transition-delay:.16s;}
+  .gallery .tile:nth-child(6){transition-delay:.2s;}
+  .gallery .tile:nth-child(7){transition-delay:.24s;}
+  .gallery .tile:nth-child(8){transition-delay:.28s;}
+  .gallery .tile:nth-child(9){transition-delay:.32s;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+  }
 
   /* NAV */
   header{
@@ -98,9 +125,15 @@
   .trust-row .dot{color:var(--accent);margin-right:6px;}
 
   .hero-card{
+    position:relative;
     background:linear-gradient(160deg, var(--surface-2), var(--surface));
     border:1px solid var(--border);border-radius:20px;padding:26px;
     box-shadow:0 30px 60px -30px rgba(0,0,0,0.6);
+  }
+  .hero-card::before{
+    content:"";position:absolute;inset:-30px;z-index:-1;pointer-events:none;
+    background:radial-gradient(circle at 28% 15%, rgba(212,175,106,0.32), transparent 62%);
+    filter:blur(36px);opacity:.85;
   }
   .hero-card .photo{
     height:220px;border-radius:14px;margin-bottom:20px;
@@ -350,8 +383,8 @@
           <a class="btn btn-outline" href="#features">See features</a>
         </div>
         <div class="trust-row">
-          <span><span class="dot">★</span><strong>5.0</strong> rating (12 reviews)</span>
-          <span><strong>15</strong> trips completed</span>
+          <span><span class="dot">★</span><strong><span class="count-up" data-target="5.0" data-decimals="1">0.0</span></strong> rating (<span class="count-up" data-target="12" data-decimals="0">0</span> reviews)</span>
+          <span><strong><span class="count-up" data-target="15" data-decimals="0">0</span></strong> trips completed</span>
           <span><strong>1 yr+</strong> hosting on Turo</span>
           <span><strong>Heathrow</strong> pickup available</span>
         </div>
@@ -362,14 +395,14 @@
           <span class="badge">2019 · AMG Line · 8 seats</span>
         </div>
         <div class="spec-row">
-          <div class="spec"><strong>8</strong>Seats</div>
+          <div class="spec"><strong><span class="count-up" data-target="8" data-decimals="0">0</span></strong>Seats</div>
           <div class="spec"><strong>Diesel</strong>Automatic</div>
           <div class="spec"><strong>Greenford</strong>Pickup point</div>
           <div class="spec"><strong>30+</strong>Min. driver age</div>
         </div>
         <div class="price-line">
           <div class="amount">From £125<span>/day</span></div>
-          <div class="stars">★★★★★ 5.0</div>
+          <div class="stars">★★★★★ <span class="count-up" data-target="5.0" data-decimals="1">0.0</span></div>
         </div>
         <a class="btn btn-primary btn-block" href="https://turo.com/gb/en/minivan-rental/united-kingdom/greenford/mercedes-benz/v-class/3656335" target="_blank" rel="noopener">View live pricing on Turo</a>
       </div>
@@ -379,23 +412,23 @@
   <!-- USE CASES -->
   <section>
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <div class="eyebrow">Why hire this V-Class</div>
         <h2>Built for the trips a normal car can't do</h2>
         <p>Eight seats, a smooth diesel automatic, and genuine luggage space make it the practical choice for the journeys that matter.</p>
       </div>
       <div class="cards-3">
-        <div class="card">
+        <div class="card reveal">
           <div class="icon">✈</div>
           <h3>Airport transfers</h3>
           <p>Direct pickup and drop-off options near Heathrow, so you can arrive together with all the luggage in one vehicle.</p>
         </div>
-        <div class="card">
+        <div class="card reveal">
           <div class="icon">👪</div>
           <h3>Family &amp; group trips</h3>
           <p>Room for up to 8 with space to spare, so there's no convoy of two cars and no packing compromises.</p>
         </div>
-        <div class="card">
+        <div class="card reveal">
           <div class="icon">🎉</div>
           <h3>Events &amp; occasions</h3>
           <p>Weddings, nights out, and group days out: arrive comfortably, and let someone else worry about parking.</p>
@@ -407,13 +440,13 @@
   <!-- FEATURES -->
   <section class="alt" id="features">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <div class="eyebrow">Vehicle features</div>
         <h2>Everything you'd expect from an AMG Line V-Class</h2>
         <p>Straight from the current Turo listing. Always double-check the live listing for the most up-to-date details.</p>
       </div>
       <div class="feature-grid">
-        <div class="feature-col">
+        <div class="feature-col reveal">
           <h4>Safety</h4>
           <ul>
             <li>Adaptive cruise control</li>
@@ -422,7 +455,7 @@
             <li>Brake assist</li>
           </ul>
         </div>
-        <div class="feature-col">
+        <div class="feature-col reveal">
           <h4>Connectivity</h4>
           <ul>
             <li>Bluetooth</li>
@@ -431,7 +464,7 @@
             <li>Built-in GPS</li>
           </ul>
         </div>
-        <div class="feature-col">
+        <div class="feature-col reveal">
           <h4>Comfort</h4>
           <ul>
             <li>Heated seats</li>
@@ -440,7 +473,7 @@
             <li>Automatic transmission</li>
           </ul>
         </div>
-        <div class="feature-col">
+        <div class="feature-col reveal">
           <h4>Convenience</h4>
           <ul>
             <li>Pet-friendly</li>
@@ -456,45 +489,45 @@
   <!-- GALLERY -->
   <section id="gallery">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <div class="eyebrow">Gallery</div>
         <h2>See the V-Class</h2>
         <p>A few favourites from the full photo set. See every photo on the live Turo listing.</p>
       </div>
       <div class="gallery">
-        <button type="button" class="tile g1" data-img="images/gallery-1.jpg" data-label="Exterior">
+        <button type="button" class="tile reveal g1" data-img="images/gallery-1.jpg" data-label="Exterior">
           <span class="tile-bg"></span>
           <span class="tile-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Exterior</span>
         </button>
-        <button type="button" class="tile g2" data-img="images/gallery-2.jpg" data-label="Interior &amp; sunroof">
+        <button type="button" class="tile reveal g2" data-img="images/gallery-2.jpg" data-label="Interior &amp; sunroof">
           <span class="tile-bg"></span>
           <span class="tile-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Interior &amp; sunroof</span>
         </button>
-        <button type="button" class="tile g3" data-img="images/gallery-3.jpg" data-label="Rear seats">
+        <button type="button" class="tile reveal g3" data-img="images/gallery-3.jpg" data-label="Rear seats">
           <span class="tile-bg"></span>
           <span class="tile-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Rear seats</span>
         </button>
-        <button type="button" class="tile g4" data-img="images/gallery-4.jpg" data-label="Boot space">
+        <button type="button" class="tile reveal g4" data-img="images/gallery-4.jpg" data-label="Boot space">
           <span class="tile-bg"></span>
           <span class="tile-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Boot space</span>
         </button>
-        <button type="button" class="tile g5" data-img="images/gallery-5.jpg" data-label="Front view">
+        <button type="button" class="tile reveal g5" data-img="images/gallery-5.jpg" data-label="Front view">
           <span class="tile-bg"></span>
           <span class="tile-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Front view</span>
         </button>
-        <button type="button" class="tile g6" data-img="images/gallery-6.jpg" data-label="Side profile">
+        <button type="button" class="tile reveal g6" data-img="images/gallery-6.jpg" data-label="Side profile">
           <span class="tile-bg"></span>
           <span class="tile-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Side profile</span>
         </button>
-        <button type="button" class="tile g7" data-img="images/gallery-7.jpg" data-label="Rear view">
+        <button type="button" class="tile reveal g7" data-img="images/gallery-7.jpg" data-label="Rear view">
           <span class="tile-bg"></span>
           <span class="tile-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Rear view</span>
         </button>
-        <button type="button" class="tile g8" data-img="images/gallery-8.jpg" data-label="Spacious interior">
+        <button type="button" class="tile reveal g8" data-img="images/gallery-8.jpg" data-label="Spacious interior">
           <span class="tile-bg"></span>
           <span class="tile-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Spacious interior</span>
         </button>
-        <button type="button" class="tile g9" data-img="images/gallery-9.jpg" data-label="Dashboard">
+        <button type="button" class="tile reveal g9" data-img="images/gallery-9.jpg" data-label="Dashboard">
           <span class="tile-bg"></span>
           <span class="tile-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Dashboard</span>
         </button>
@@ -505,23 +538,23 @@
   <!-- REVIEWS -->
   <section class="alt" id="reviews">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <div class="eyebrow">What guests say</div>
         <h2>5.0★ from 12 reviews on Turo</h2>
         <p>A sample of feedback from the live listing. See all reviews on Turo.</p>
       </div>
       <div class="reviews">
-        <div class="review">
+        <div class="review reveal">
           <div class="stars">★★★★★</div>
           <p>"Easy pick up and drop off. The host made the whole process simple from start to finish."</p>
           <div class="who">Turo guest</div>
         </div>
-        <div class="review">
+        <div class="review reveal">
           <div class="stars">★★★★★</div>
           <p>"The perfect long-distance cruiser for my large family and luggage, with so much room."</p>
           <div class="who">Turo guest</div>
         </div>
-        <div class="review">
+        <div class="review reveal">
           <div class="stars">★★★★★</div>
           <p>"The host went above and beyond to make sure everything was ready for us."</p>
           <div class="who">Turo guest</div>
@@ -533,12 +566,12 @@
   <!-- BOOKING / PRICING -->
   <section id="booking">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <div class="eyebrow">Pricing &amp; booking</div>
         <h2>All bookings and payments happen on Turo</h2>
         <p>This keeps every trip covered by Turo's insurance and protection policies. You're never asked to pay or share details anywhere else.</p>
       </div>
-      <div class="booking-panel">
+      <div class="booking-panel reveal">
         <div class="booking-left">
           <h3>How it works</h3>
           <p>Three steps from here to picking up the keys.</p>
@@ -573,24 +606,24 @@
   <!-- FAQ -->
   <section class="alt" id="faq">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <div class="eyebrow">FAQ</div>
         <h2>Good to know</h2>
       </div>
       <div class="faq">
-        <details class="faq-item" open>
+        <details class="faq-item reveal" open>
           <summary>Why does this site send me to Turo to book?</summary>
           <p>Turo handles identity verification, payment, and insurance for every trip, which protects both you and the vehicle. This site exists to showcase the car in more detail. The actual booking always happens on Turo.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item reveal">
           <summary>Can I pick up at Heathrow Airport?</summary>
           <p>Yes, a Heathrow pickup option is available in addition to the Greenford location. Choose your preferred pickup point when booking on Turo.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item reveal">
           <summary>Is there a minimum age to rent?</summary>
           <p>Yes, drivers must be 30 or older to book this vehicle, per the current Turo listing requirements.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item reveal">
           <summary>What's included in the price?</summary>
           <p>Pricing, mileage allowances, and any extras are set and shown on the live Turo listing at checkout. This site shows an indicative starting price only.</p>
         </details>
@@ -599,7 +632,7 @@
   </section>
 
   <!-- FINAL CTA -->
-  <div class="final-cta">
+  <div class="final-cta reveal">
     <div class="wrap">
       <h2>Ready to book the V-Class?</h2>
       <p>Check live availability, exact pricing for your dates, and complete your booking securely on Turo.</p>
@@ -687,6 +720,62 @@
       if(e.key === 'ArrowRight') show(current+1);
       if(e.key === 'ArrowLeft') show(current-1);
     });
+  })();
+
+  // Scroll-reveal
+  (function(){
+    var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+    if(!reveals.length) return;
+    if(!('IntersectionObserver' in window)){
+      reveals.forEach(function(el){ el.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    reveals.forEach(function(el){ io.observe(el); });
+  })();
+
+  // Animated stat counters
+  (function(){
+    var counters = Array.prototype.slice.call(document.querySelectorAll('.count-up'));
+    if(!counters.length) return;
+    function format(el, value){
+      var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+      return value.toFixed(decimals);
+    }
+    function animate(el){
+      var target = parseFloat(el.getAttribute('data-target'));
+      var duration = 1100;
+      var start = null;
+      function step(ts){
+        if(start === null) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = format(el, target * eased);
+        if(progress < 1){ requestAnimationFrame(step); }
+        else { el.textContent = format(el, target); }
+      }
+      requestAnimationFrame(step);
+    }
+    if(!('IntersectionObserver' in window)){
+      counters.forEach(function(el){ el.textContent = format(el, parseFloat(el.getAttribute('data-target'))); });
+      return;
+    }
+    var io2 = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          animate(entry.target);
+          io2.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.6});
+    counters.forEach(function(el){ io2.observe(el); });
   })();
 </script>
 </body>
