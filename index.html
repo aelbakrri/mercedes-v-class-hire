@@ -57,7 +57,7 @@
   nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;}
   .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:-0.01em;}
   .brand small{display:block;font-weight:500;font-size:11px;color:var(--muted);letter-spacing:0.04em;}
-  .nav-links{display:flex;gap:32px;font-size:14.5px;color:var(--muted);}
+  .nav-links{display:flex;gap:32px;font-size:16.5px;font-weight:500;color:var(--muted);}
   .nav-links a:hover{color:var(--text);}
   .nav-cta{display:flex;align-items:center;gap:18px;}
   .nav-cta .btn{padding:10px 20px;font-size:14px;}
@@ -160,23 +160,99 @@
   .feature-col li::before{content:"✓";color:var(--good);font-weight:700;}
 
   /* GALLERY */
-  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-  @media (max-width:760px){.gallery{grid-template-columns:repeat(2,1fr);}}
-  .gallery .tile{
-    aspect-ratio:1/1;border-radius:12px;border:1px solid var(--border);
-    background:linear-gradient(160deg, rgba(212,175,106,0.10), rgba(255,255,255,0.02));
-    background-size:cover;background-position:center;
-    display:flex;align-items:flex-end;padding:10px;font-size:12px;color:var(--muted);
+  .gallery{
+    display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:14px;
+    grid-template-areas:
+      "a a b b"
+      "a a c d"
+      "e f f g"
+      "h h i i";
   }
-  .gallery .tile.g1{background-image:linear-gradient(160deg, rgba(212,175,106,0.10), rgba(255,255,255,0.02)), url('images/gallery-1.jpg');}
-  .gallery .tile.g2{background-image:linear-gradient(160deg, rgba(212,175,106,0.10), rgba(255,255,255,0.02)), url('images/gallery-2.jpg');}
-  .gallery .tile.g3{background-image:linear-gradient(160deg, rgba(212,175,106,0.10), rgba(255,255,255,0.02)), url('images/gallery-3.jpg');}
-  .gallery .tile.g4{background-image:linear-gradient(160deg, rgba(212,175,106,0.10), rgba(255,255,255,0.02)), url('images/gallery-4.jpg');}
-  .gallery .tile.g5{background-image:linear-gradient(160deg, rgba(212,175,106,0.10), rgba(255,255,255,0.02)), url('images/gallery-5.jpg');}
-  .gallery .tile.g6{background-image:linear-gradient(160deg, rgba(212,175,106,0.10), rgba(255,255,255,0.02)), url('images/gallery-6.jpg');}
-  .gallery .tile.g7{background-image:linear-gradient(160deg, rgba(212,175,106,0.10), rgba(255,255,255,0.02)), url('images/gallery-7.jpg');}
-  .gallery .tile.g8{background-image:linear-gradient(160deg, rgba(212,175,106,0.10), rgba(255,255,255,0.02)), url('images/gallery-8.jpg');}
-  .gallery .tile.g9{background-image:linear-gradient(160deg, rgba(212,175,106,0.10), rgba(255,255,255,0.02)), url('images/gallery-9.jpg');}
+  .gallery .tile.g1{grid-area:a;}
+  .gallery .tile.g2{grid-area:b;}
+  .gallery .tile.g3{grid-area:c;}
+  .gallery .tile.g4{grid-area:d;}
+  .gallery .tile.g5{grid-area:e;}
+  .gallery .tile.g6{grid-area:f;}
+  .gallery .tile.g7{grid-area:g;}
+  .gallery .tile.g8{grid-area:h;}
+  .gallery .tile.g9{grid-area:i;}
+  @media (max-width:760px){
+    .gallery{
+      grid-template-columns:repeat(2,1fr);grid-auto-rows:140px;
+      grid-template-areas:
+        "a a"
+        "b c"
+        "d e"
+        "f f"
+        "g h"
+        "i i";
+    }
+  }
+  @media (max-width:480px){
+    .gallery{grid-template-columns:1fr;grid-auto-rows:220px;grid-template-areas:none;}
+    .gallery .tile{grid-area:auto !important;}
+  }
+  .gallery .tile{
+    position:relative;overflow:hidden;border-radius:16px;border:1px solid var(--border);
+    display:block;width:100%;height:100%;padding:0;margin:0;background:var(--surface-2);
+    cursor:zoom-in;font:inherit;text-align:left;appearance:none;box-sizing:border-box;
+  }
+  .gallery .tile-bg{
+    position:absolute;inset:0;background-size:cover;background-position:center;
+    transition:transform .5s cubic-bezier(.2,.8,.2,1);
+  }
+  .gallery .tile:hover .tile-bg,
+  .gallery .tile:focus-visible .tile-bg{transform:scale(1.08);}
+  .gallery .tile::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg, transparent 55%, rgba(6,7,9,0.72) 100%);
+  }
+  .gallery .tile-label{
+    position:absolute;left:14px;bottom:12px;z-index:2;
+    font-size:13px;font-weight:600;color:#fff;letter-spacing:0.01em;
+    display:flex;align-items:center;gap:6px;
+  }
+  .gallery .tile-label svg{width:14px;height:14px;opacity:.85;flex-shrink:0;}
+  .gallery .tile.g1 .tile-bg{background-image:url('images/gallery-1.jpg');}
+  .gallery .tile.g2 .tile-bg{background-image:url('images/gallery-2.jpg');}
+  .gallery .tile.g3 .tile-bg{background-image:url('images/gallery-3.jpg');}
+  .gallery .tile.g4 .tile-bg{background-image:url('images/gallery-4.jpg');}
+  .gallery .tile.g5 .tile-bg{background-image:url('images/gallery-5.jpg');}
+  .gallery .tile.g6 .tile-bg{background-image:url('images/gallery-6.jpg');}
+  .gallery .tile.g7 .tile-bg{background-image:url('images/gallery-7.jpg');}
+  .gallery .tile.g8 .tile-bg{background-image:url('images/gallery-8.jpg');}
+  .gallery .tile.g9 .tile-bg{background-image:url('images/gallery-9.jpg');}
+
+  /* LIGHTBOX */
+  .lightbox{
+    position:fixed;inset:0;z-index:200;background:rgba(6,7,9,0.94);
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;pointer-events:none;transition:opacity .25s ease;
+  }
+  .lightbox.open{opacity:1;pointer-events:auto;}
+  .lightbox-img{
+    max-width:88vw;max-height:78vh;border-radius:12px;
+    box-shadow:0 30px 80px -20px rgba(0,0,0,0.7);
+  }
+  .lightbox-caption{
+    position:absolute;bottom:28px;left:0;right:0;text-align:center;
+    font-size:14px;color:var(--muted);
+  }
+  .lightbox-close,.lightbox-prev,.lightbox-next{
+    position:absolute;display:flex;align-items:center;justify-content:center;
+    width:44px;height:44px;border-radius:999px;border:1px solid var(--border);
+    background:rgba(255,255,255,0.06);color:#fff;font-size:20px;cursor:pointer;
+    transition:background .15s ease;
+  }
+  .lightbox-close:hover,.lightbox-prev:hover,.lightbox-next:hover{background:rgba(255,255,255,0.14);}
+  .lightbox-close{top:20px;right:20px;}
+  .lightbox-prev{top:50%;left:20px;transform:translateY(-50%);}
+  .lightbox-next{top:50%;right:20px;transform:translateY(-50%);}
+  @media (max-width:600px){
+    .lightbox-prev{left:8px;}
+    .lightbox-next{right:8px;}
+  }
 
   /* REVIEWS */
   .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
@@ -386,15 +462,42 @@
         <p>A few favourites from the full photo set. See every photo on the live Turo listing.</p>
       </div>
       <div class="gallery">
-        <div class="tile g1">Exterior</div>
-        <div class="tile g2">Interior &amp; sunroof</div>
-        <div class="tile g3">Rear seats</div>
-        <div class="tile g4">Boot space</div>
-        <div class="tile g5">Front view</div>
-        <div class="tile g6">Side profile</div>
-        <div class="tile g7">Rear view</div>
-        <div class="tile g8">Spacious interior</div>
-        <div class="tile g9">Dashboard</div>
+        <button type="button" class="tile g1" data-img="images/gallery-1.jpg" data-label="Exterior">
+          <span class="tile-bg"></span>
+          <span class="tile-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Exterior</span>
+        </button>
+        <button type="button" class="tile g2" data-img="images/gallery-2.jpg" data-label="Interior &amp; sunroof">
+          <span class="tile-bg"></span>
+          <span class="tile-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Interior &amp; sunroof</span>
+        </button>
+        <button type="button" class="tile g3" data-img="images/gallery-3.jpg" data-label="Rear seats">
+          <span class="tile-bg"></span>
+          <span class="tile-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Rear seats</span>
+        </button>
+        <button type="button" class="tile g4" data-img="images/gallery-4.jpg" data-label="Boot space">
+          <span class="tile-bg"></span>
+          <span class="tile-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Boot space</span>
+        </button>
+        <button type="button" class="tile g5" data-img="images/gallery-5.jpg" data-label="Front view">
+          <span class="tile-bg"></span>
+          <span class="tile-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Front view</span>
+        </button>
+        <button type="button" class="tile g6" data-img="images/gallery-6.jpg" data-label="Side profile">
+          <span class="tile-bg"></span>
+          <span class="tile-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Side profile</span>
+        </button>
+        <button type="button" class="tile g7" data-img="images/gallery-7.jpg" data-label="Rear view">
+          <span class="tile-bg"></span>
+          <span class="tile-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Rear view</span>
+        </button>
+        <button type="button" class="tile g8" data-img="images/gallery-8.jpg" data-label="Spacious interior">
+          <span class="tile-bg"></span>
+          <span class="tile-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Spacious interior</span>
+        </button>
+        <button type="button" class="tile g9" data-img="images/gallery-9.jpg" data-label="Dashboard">
+          <span class="tile-bg"></span>
+          <span class="tile-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Dashboard</span>
+        </button>
       </div>
     </div>
   </section>
@@ -532,8 +635,59 @@
   </div>
 </footer>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+  <button type="button" class="lightbox-prev" id="lightbox-prev" aria-label="Previous photo">&lsaquo;</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="">
+  <button type="button" class="lightbox-next" id="lightbox-next" aria-label="Next photo">&rsaquo;</button>
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  (function(){
+    var tiles = Array.prototype.slice.call(document.querySelectorAll('.gallery .tile'));
+    if(!tiles.length) return;
+    var photos = tiles.map(function(t){ return {src:t.getAttribute('data-img'), label:t.getAttribute('data-label')}; });
+    var lightbox = document.getElementById('lightbox');
+    var imgEl = document.getElementById('lightbox-img');
+    var captionEl = document.getElementById('lightbox-caption');
+    var current = 0;
+
+    function show(i){
+      current = (i + photos.length) % photos.length;
+      imgEl.src = photos[current].src;
+      imgEl.alt = photos[current].label;
+      captionEl.textContent = photos[current].label;
+    }
+    function open(i){
+      show(i);
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+    function close(){
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
+
+    tiles.forEach(function(t, i){
+      t.addEventListener('click', function(){ open(i); });
+    });
+    document.getElementById('lightbox-close').addEventListener('click', close);
+    document.getElementById('lightbox-next').addEventListener('click', function(){ show(current+1); });
+    document.getElementById('lightbox-prev').addEventListener('click', function(){ show(current-1); });
+    lightbox.addEventListener('click', function(e){ if(e.target === lightbox) close(); });
+    document.addEventListener('keydown', function(e){
+      if(!lightbox.classList.contains('open')) return;
+      if(e.key === 'Escape') close();
+      if(e.key === 'ArrowRight') show(current+1);
+      if(e.key === 'ArrowLeft') show(current-1);
+    });
+  })();
 </script>
 </body>
 </html>
