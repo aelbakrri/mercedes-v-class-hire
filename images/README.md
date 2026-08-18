@@ -4,12 +4,19 @@ These are real photos from your car, pulled from `/Users/abdul/Desktop/Car Photo
 
 | Filename | Used for | Source |
 |---|---|---|
-| `hero.jpg` | Big background photo behind the homepage headline | IMG_2202 (rear 3/4 exterior) |
-| `hero-thumb.jpg` | Small photo inside the booking card, top right of the hero | IMG_2211 (captain's chair close-up) |
-| `gallery-1.jpg` | Gallery — exterior | IMG_2200 |
+| `hero.jpg` | Big background photo behind the homepage headline | IMG_2200 (side-profile exterior) |
+| `hero-thumb.jpg` | Small photo inside the booking card, top right of the hero | IMG_2199 (front-quarter exterior) |
+| `gallery-1.jpg` | Gallery — exterior | IMG_2197 |
 | `gallery-2.jpg` | Gallery — interior & sunroof | IMG_2218 |
 | `gallery-3.jpg` | Gallery — rear seats | IMG_2223 |
 | `gallery-4.jpg` | Gallery — boot space | IMG_2221 |
+| `gallery-5.jpg` | Gallery — front view | IMG_2199 |
+| `gallery-6.jpg` | Gallery — side profile | IMG_2200 |
+| `gallery-7.jpg` | Gallery — rear view | IMG_2202 |
+| `gallery-8.jpg` | Gallery — spacious interior | IMG_2213 |
+| `gallery-9.jpg` | Gallery — dashboard | IMG_2230 |
+
+Note: `gallery-5.jpg` and `gallery-7.jpg` show the number plate reasonably clearly (front/rear angles). That's already visible on the public Turo listing too, so it's not new exposure, but flag if you'd rather have it cropped or blurred out.
 
 ## Swapping in different shots
 

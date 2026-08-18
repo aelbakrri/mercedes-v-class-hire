@@ -56,15 +56,11 @@
   }
   nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;}
   .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:-0.01em;}
-  .brand-mark{
-    width:34px;height:34px;border-radius:9px;background:var(--surface-2);
-    border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
-    color:var(--accent);font-family:Georgia,serif;font-size:18px;
-  }
   .brand small{display:block;font-weight:500;font-size:11px;color:var(--muted);letter-spacing:0.04em;}
   .nav-links{display:flex;gap:32px;font-size:14.5px;color:var(--muted);}
   .nav-links a:hover{color:var(--text);}
   .nav-cta{display:flex;align-items:center;gap:18px;}
+  .nav-cta .btn{padding:10px 20px;font-size:14px;}
   .nav-mobile-hide{display:flex;}
   @media (max-width:820px){
     .nav-links{display:none;}
@@ -72,10 +68,9 @@
   @media (max-width:480px){
     nav{padding:13px 16px;gap:10px;}
     .brand{font-size:14px;gap:7px;}
-    .brand-mark{width:28px;height:28px;font-size:15px;border-radius:8px;}
     .brand small{font-size:10px;}
     .nav-cta{gap:8px;}
-    .nav-cta .btn{padding:10px 16px;font-size:13px;white-space:nowrap;}
+    .nav-cta .btn{padding:9px 15px;font-size:12.5px;white-space:nowrap;}
   }
   @media (max-width:360px){
     .brand small{display:none;}
@@ -165,7 +160,7 @@
   .feature-col li::before{content:"✓";color:var(--good);font-weight:700;}
 
   /* GALLERY */
-  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
   @media (max-width:760px){.gallery{grid-template-columns:repeat(2,1fr);}}
   .gallery .tile{
     aspect-ratio:1/1;border-radius:12px;border:1px solid var(--border);
@@ -177,6 +172,11 @@
   .gallery .tile.g2{background-image:linear-gradient(160deg, rgba(212,175,106,0.10), rgba(255,255,255,0.02)), url('images/gallery-2.jpg');}
   .gallery .tile.g3{background-image:linear-gradient(160deg, rgba(212,175,106,0.10), rgba(255,255,255,0.02)), url('images/gallery-3.jpg');}
   .gallery .tile.g4{background-image:linear-gradient(160deg, rgba(212,175,106,0.10), rgba(255,255,255,0.02)), url('images/gallery-4.jpg');}
+  .gallery .tile.g5{background-image:linear-gradient(160deg, rgba(212,175,106,0.10), rgba(255,255,255,0.02)), url('images/gallery-5.jpg');}
+  .gallery .tile.g6{background-image:linear-gradient(160deg, rgba(212,175,106,0.10), rgba(255,255,255,0.02)), url('images/gallery-6.jpg');}
+  .gallery .tile.g7{background-image:linear-gradient(160deg, rgba(212,175,106,0.10), rgba(255,255,255,0.02)), url('images/gallery-7.jpg');}
+  .gallery .tile.g8{background-image:linear-gradient(160deg, rgba(212,175,106,0.10), rgba(255,255,255,0.02)), url('images/gallery-8.jpg');}
+  .gallery .tile.g9{background-image:linear-gradient(160deg, rgba(212,175,106,0.10), rgba(255,255,255,0.02)), url('images/gallery-9.jpg');}
 
   /* REVIEWS */
   .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
@@ -245,7 +245,6 @@
 <header>
   <nav class="wrap">
     <a class="brand" href="#top">
-      <span class="brand-mark">V</span>
       <span>Mercedes V Class Hire<small>London</small></span>
     </a>
     <div class="nav-links">
@@ -391,6 +390,11 @@
         <div class="tile g2">Interior &amp; sunroof</div>
         <div class="tile g3">Rear seats</div>
         <div class="tile g4">Boot space</div>
+        <div class="tile g5">Front view</div>
+        <div class="tile g6">Side profile</div>
+        <div class="tile g7">Rear view</div>
+        <div class="tile g8">Spacious interior</div>
+        <div class="tile g9">Dashboard</div>
       </div>
     </div>
   </section>
