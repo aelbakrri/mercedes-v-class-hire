@@ -63,6 +63,7 @@
   .feature-grid .feature-col:nth-child(4){transition-delay:.18s;}
   .reviews .review:nth-child(2){transition-delay:.08s;}
   .reviews .review:nth-child(3){transition-delay:.16s;}
+  .reviews .review:nth-child(4){transition-delay:.24s;}
   .gallery .tile:nth-child(2){transition-delay:.04s;}
   .gallery .tile:nth-child(3){transition-delay:.08s;}
   .gallery .tile:nth-child(4){transition-delay:.12s;}
@@ -81,23 +82,23 @@
     background:rgba(11,13,16,0.86);backdrop-filter:blur(10px);
     border-bottom:1px solid var(--border);
   }
-  nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:-0.01em;}
-  .brand small{display:block;font-weight:500;font-size:11px;color:var(--muted);letter-spacing:0.04em;}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:22px 24px;}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px;letter-spacing:-0.01em;}
+  .brand small{display:block;font-weight:500;font-size:12px;color:var(--muted);letter-spacing:0.04em;}
   .nav-links{display:flex;gap:32px;font-size:16.5px;font-weight:500;color:var(--muted);}
   .nav-links a:hover{color:var(--text);}
   .nav-cta{display:flex;align-items:center;gap:18px;}
-  .nav-cta .btn{padding:10px 20px;font-size:14px;}
+  .nav-cta .btn{padding:13px 24px;font-size:15px;}
   .nav-mobile-hide{display:flex;}
   @media (max-width:820px){
     .nav-links{display:none;}
   }
   @media (max-width:480px){
-    nav{padding:13px 16px;gap:10px;}
-    .brand{font-size:14px;gap:7px;}
-    .brand small{font-size:10px;}
+    nav{padding:16px 18px;gap:10px;}
+    .brand{font-size:15.5px;gap:8px;}
+    .brand small{font-size:10.5px;}
     .nav-cta{gap:8px;}
-    .nav-cta .btn{padding:9px 15px;font-size:12.5px;white-space:nowrap;}
+    .nav-cta .btn{padding:10px 17px;font-size:13.5px;white-space:nowrap;}
   }
   @media (max-width:360px){
     .brand small{display:none;}
@@ -178,6 +179,7 @@
     width:44px;height:44px;border-radius:11px;background:var(--accent-soft);
     display:flex;align-items:center;justify-content:center;margin-bottom:18px;color:var(--accent);
   }
+  .card .icon svg{width:22px;height:22px;}
   .card h3{font-size:17px;margin-bottom:8px;}
   .card p{color:var(--muted);font-size:14.5px;}
 
@@ -288,7 +290,7 @@
   }
 
   /* REVIEWS */
-  .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .reviews{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
   @media (max-width:860px){.reviews{grid-template-columns:1fr;}}
   .review{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;}
   .review .stars{color:var(--accent);margin-bottom:12px;font-size:14px;}
@@ -419,17 +421,17 @@
       </div>
       <div class="cards-3">
         <div class="card reveal">
-          <div class="icon">✈</div>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="currentColor" style="transform:rotate(45deg)"><path d="M21,16V14L13,9V3.5C13,2.67 12.33,2 11.5,2C10.67,2 10,2.67 10,3.5V9L2,14V16L10,13.5V19L7.5,20.5V22L11.5,21L15.5,22V20.5L13,19V13.5L21,16Z"/></svg></div>
           <h3>Airport transfers</h3>
           <p>Direct pickup and drop-off options near Heathrow, so you can arrive together with all the luggage in one vehicle.</p>
         </div>
         <div class="card reveal">
-          <div class="icon">👪</div>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
           <h3>Family &amp; group trips</h3>
           <p>Room for up to 8 with space to spare, so there's no convoy of two cars and no packing compromises.</p>
         </div>
         <div class="card reveal">
-          <div class="icon">🎉</div>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
           <h3>Events &amp; occasions</h3>
           <p>Weddings, nights out, and group days out: arrive comfortably, and let someone else worry about parking.</p>
         </div>
@@ -503,9 +505,9 @@
           <span class="tile-bg"></span>
           <span class="tile-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Interior &amp; sunroof</span>
         </button>
-        <button type="button" class="tile reveal g3" data-img="images/gallery-3.jpg" data-label="Rear seats">
+        <button type="button" class="tile reveal g3" data-img="images/gallery-3.jpg" data-label="Easy boarding">
           <span class="tile-bg"></span>
-          <span class="tile-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Rear seats</span>
+          <span class="tile-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Easy boarding</span>
         </button>
         <button type="button" class="tile reveal g4" data-img="images/gallery-4.jpg" data-label="Boot space">
           <span class="tile-bg"></span>
@@ -557,6 +559,11 @@
         <div class="review reveal">
           <div class="stars">★★★★★</div>
           <p>"The host went above and beyond to make sure everything was ready for us."</p>
+          <div class="who">Turo guest</div>
+        </div>
+        <div class="review reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Excellent quick communication, well looked after spacious vehicle with extras supplied which were much appreciated (charger, phone holder, water), would definitely book again."</p>
           <div class="who">Turo guest</div>
         </div>
       </div>

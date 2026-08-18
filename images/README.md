@@ -8,7 +8,7 @@ These are real photos from your car, pulled from `/Users/abdul/Desktop/Car Photo
 | `hero-thumb.jpg` | Small photo inside the booking card, top right of the hero | IMG_2199 (front-quarter exterior) |
 | `gallery-1.jpg` | Gallery — exterior | IMG_2197 |
 | `gallery-2.jpg` | Gallery — interior & sunroof | IMG_2218 |
-| `gallery-3.jpg` | Gallery — rear seats | IMG_2223 |
+| `gallery-3.jpg` | Gallery — easy boarding (side door open) | IMG_2212 |
 | `gallery-4.jpg` | Gallery — boot space | IMG_2221 |
 | `gallery-5.jpg` | Gallery — front view | IMG_2199 |
 | `gallery-6.jpg` | Gallery — side profile | IMG_2200 |
